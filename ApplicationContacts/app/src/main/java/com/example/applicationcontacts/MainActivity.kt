@@ -15,16 +15,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val agregar = findViewById<Button>(R.id.button)
         val listView = findViewById<ListView>(R.id.lista1)
+        val listaContactos = (this.application as MyApplication).getContacts()
 
         agregar.setOnClickListener {
             val intent = Intent(this, Activity2::class.java)
             startActivity(intent)
         }
+        val adapterContactos = ArrayAdapter(this, android.R.layout.simple_list_item_1, listaContactos)
+        listView.adapter = adapterContactos
 
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1 , array)
-        listView.setAdapter(adapter)
         listView.setOnItemClickListener { parent, view, position, id ->
-            val orden: Contact = (this.application as MyApplication).()
+            val contacto: Contact = (this.application as MyApplication).guardarContact
+            val showContact = Intent(this, Activity3::class.java)
+            showContact.putExtra("contactoPosicion", position)
+            startActivity(showContact)
+        }
 
 
     }

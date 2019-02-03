@@ -1,6 +1,5 @@
 package com.example.proyectmanager
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
@@ -60,22 +59,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.inicio -> {
-                val intentMain = Intent(this, MainActivity::class.java)
-                startActivity(intentMain)
-            }
-            R.id.proyectos -> {
-                val intentProyectos = Intent(this, ProyectoAct::class.java)
-                startActivity(intentProyectos)
+            R.id.nav_gallery -> {
 
             }
-            R.id.direccion -> {
-                val intentMap = Intent(this, MapActivity::class.java)
-                startActivity(intentMap)
-
+            R.id.nav_slideshow -> {
 
             }
+            R.id.nav_manage -> {
 
+            }
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)

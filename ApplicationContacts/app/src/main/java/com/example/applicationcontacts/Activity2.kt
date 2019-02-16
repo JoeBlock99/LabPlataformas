@@ -19,9 +19,9 @@ class Activity2 : AppCompatActivity() {
             startActivity(intent)
         }
         crear.setOnClickListener{
-            val nombre = findViewById<EditText>(R.id.textView6).getText().toString()
-            val telefono = findViewById<EditText>(R.id.textView3).getText().toString()
-            val correo = findViewById<EditText>(R.id.textView4).getText().toString()
+            val nombre = findViewById<EditText>(R.id.name).getText().toString()
+            val telefono = findViewById<EditText>(R.id.phone).getText().toString()
+            val correo = findViewById<EditText>(R.id.email).getText().toString()
             val contacto = Contact(nombre, telefono, correo)
             (this.application as MyApplication).addContact(contacto)
             Toast.makeText(this, "Se agrego: ${nombre} correctamente" , Toast.LENGTH_SHORT).show()

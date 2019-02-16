@@ -14,7 +14,7 @@ class MyApplication: Application() {
         return this.contactList
     }
 
-    fun getContact(index: Int): Contact {
+    fun getContactPosition(index: Int): Contact {
         return this.contactList[index]
     }
 

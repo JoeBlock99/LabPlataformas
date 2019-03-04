@@ -62,7 +62,7 @@ class MusicService : Service(), MediaPlayer.OnPreparedListener, MediaPlayer.OnEr
         override fun onServiceConnected(name: ComponentName, service: IBinder) {
             val binder = service as MusicBinder
             //get service
-            musicSrv = binder.getService()
+            musicSrv = binder.service
             //pass list
             musicSrv!!.setList(songs)
             musicBound = true
@@ -92,7 +92,7 @@ class MusicService : Service(), MediaPlayer.OnPreparedListener, MediaPlayer.OnEr
             get() = this@MusicService
     }
 
-    fun onBind(arg0: Intent): IBinder? {
+    override fun onBind(arg0: Intent): IBinder? {
         // TODO Auto-generated method stub
         return musicBind
     }

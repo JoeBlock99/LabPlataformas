@@ -22,6 +22,25 @@ import java.util.*
 
 
 class MainActivity : AppCompatActivity(), MediaPlayerControl {
+    override fun isPlaying(): Boolean {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun getDuration(): Int {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun getBufferPercentage(): Int {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun getCurrentPosition(): Int {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun getAudioSessionId(): Int {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
 
     val songList: ArrayList<Song> = ArrayList<Song>()
@@ -67,7 +86,7 @@ class MainActivity : AppCompatActivity(), MediaPlayerControl {
         override fun onServiceConnected(name: ComponentName, service: IBinder) {
             val binder = service as MusicBinder
             //get service
-            musicSrv = binder.getService()
+            musicSrv = binder.service
             //pass list
             musicSrv!!.setList(songList)
             musicBound = true
@@ -103,12 +122,12 @@ class MainActivity : AppCompatActivity(), MediaPlayerControl {
         //set the controller up
         var controller = MusicController(this)
 
-        controller.setPrevNextListeners(object : View.OnClickListener() {
-            fun onClick(v: View) {
+        controller.setPrevNextListeners(object : View.OnClickListener {
+            override fun onClick(v: View) {
                 playNext()
             }
-        }, object : View.OnClickListener() {
-            fun onClick(v: View) {
+        }, object : View.OnClickListener {
+            override fun onClick(v: View) {
                 playPrev()
             }
         })

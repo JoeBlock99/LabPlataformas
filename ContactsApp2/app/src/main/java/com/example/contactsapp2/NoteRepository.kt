@@ -1,7 +1,8 @@
 package com.example.contactsapp2
 import android.app.Application
 import android.os.AsyncTask
-import androidx.lifecycle.LiveDat
+import androidx.lifecycle.LiveData
+
 class NoteRepository (application: Application){
     private var noteDao: NoteDao
 

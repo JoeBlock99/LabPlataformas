@@ -9,6 +9,9 @@ data class Note(
 
     var description: String,
 
+    var email: String,
+
+
     var priority: Int
 ) {
     //does it matter if these are private or not?

@@ -1,25 +1,17 @@
 package com.example.contactsapp2
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.app.Activity
-import android.arch.lifecycle.Observer
 import android.content.Intent
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.helper.ItemTouchHelper
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.mogalabs.tagnotes.data.Note
-import com.mogalabs.tagnotes.adapters.NoteAdapter
-import com.mogalabs.tagnotes.viewmodels.NoteViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -42,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         recycler_view.layoutManager = LinearLayoutManager(this)
         recycler_view.setHasFixedSize(true)
 
-        var adapter = NotesAdapt()
+        var adapter = NoteAdapter()
 
         recycler_view.adapter = adapter
 
@@ -68,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         }
         ).attachToRecyclerView(recycler_view)
 
-        adapter.setOnItemClickListener(object : NotesAdapt.OnItemClickListener {
+        adapter.setOnItemClickListener(object : NoteAdapter.OnItemClickListener {
             override fun onItemClick(note: Note) {
                 var intent = Intent(baseContext, AddEditNoteActivity::class.java)
                 intent.putExtra(AddEditNoteActivity.EXTRA_ID, note.id)
@@ -106,6 +98,7 @@ class MainActivity : AppCompatActivity() {
             val newNote = Note(
                 data!!.getStringExtra(AddEditNoteActivity.EXTRA_TITLE),
                 data.getStringExtra(AddEditNoteActivity.EXTRA_DESCRIPTION),
+                data.getStringExtra(AddEditNoteActivity.EXTRA_EMAIL),
                 data.getIntExtra(AddEditNoteActivity.EXTRA_PRIORITY, 1)
             )
             noteViewModel.insert(newNote)
@@ -121,6 +114,7 @@ class MainActivity : AppCompatActivity() {
             val updateNote = Note(
                 data!!.getStringExtra(AddEditNoteActivity.EXTRA_TITLE),
                 data.getStringExtra(AddEditNoteActivity.EXTRA_DESCRIPTION),
+                data.getStringExtra(AddEditNoteActivity.EXTRA_EMAIL),
                 data.getIntExtra(AddEditNoteActivity.EXTRA_PRIORITY, 1)
             )
             updateNote.id = data.getIntExtra(AddEditNoteActivity.EXTRA_ID, -1)

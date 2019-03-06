@@ -3,8 +3,6 @@ package com.example.contactsapp2
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.mogalabs.tagnotes.data.NoteRepository
-import com.mogalabs.tagnotes.data.Note
 
 class NoteViewModel(application: Application) : AndroidViewModel(application){
     private var repository: NoteRepository =
